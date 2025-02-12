@@ -13,7 +13,7 @@
 	];
 </script>
 
-<Card class="min-h-80 bg-gray-800/80 mx-auto shadow-xl transition-transform duration-300 card-size"
+<Card class="md:min-h-80 min-h-[600px] bg-gray-800/80 mx-auto shadow-xl transition-transform duration-300 card-size"
       style="backdrop-filter: blur(10px);">
 	<CardContent class="flex flex-col items-center p-6 space-y-4">
 		<!-- カードタイトル -->

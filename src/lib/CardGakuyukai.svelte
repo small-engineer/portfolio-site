@@ -14,7 +14,7 @@
 	};
 </script>
 
-	<Card class="min-h-80 bg-gray-800/80 mx-auto shadow-xl transition-transform duration-300 card-size"
+	<Card class="md:min-h-80 min-h-[600px] bg-gray-800/80 mx-auto shadow-xl transition-transform duration-300 card-size"
       style="backdrop-filter: blur(10px);">
 		<CardContent class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
 			<!-- 左カラム：タイトルと説明 -->

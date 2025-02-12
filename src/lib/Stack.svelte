@@ -25,44 +25,49 @@
 		});
 	});
 
-	/**
+		/**
 	 * クリック時のアニメーション
 	 */
 	function handleCardClick(cardId: number): void {
+		// クリックしたカードが一番上のカードでない場合は処理しない
 		if (cardId !== cards[0]) return;
 		const cardEl = document.getElementById(`card-${cardId}`);
 		if (!cardEl) return;
 
-		gsap
-			.timeline({
-				immediateRender: false,
-				onComplete: () => {
-					setTimeout(() => {
-						// 先頭カードを末尾に移動
-						cards = [...cards.slice(1), cards[0]];
+		// 画面幅が768px未満の場合はスマホと判断
+		const isMobile: boolean = window.innerWidth < 768;
 
-						// 2枚目までオフセットを適用し、それ以降は固定
-						cards.forEach((id, index) => {
-							const el = document.getElementById(`card-${id}`);
-							if (el) {
-								gsap.to(el, {
-									x: index < 3 ? index * 10 : 0,
-									y: index < 3 ? index * 10 : 0,
-									duration: 0.8,
-									ease: 'power2.inOut',
-									immediateRender: false
-								});
-							}
-						});
-					}, 100);
-				}
-			})
-			.to(cardEl, {
-				y: -350,
-				duration: 0.4,
-				ease: 'power2.out',
-				immediateRender: false
-			})
+		// スマホの場合は横方向、PCの場合は上方向にずらす
+		const tweenProps = isMobile ? { x: 330 } : { y: -350 };
+
+		gsap.timeline({
+			immediateRender: false,
+			onComplete: () => {
+				setTimeout(() => {
+					// 先頭カードを末尾に移動
+					cards = [...cards.slice(1), cards[0]];
+
+					// 2枚目までオフセットを適用し、それ以降は固定
+					cards.forEach((id, index) => {
+						const el = document.getElementById(`card-${id}`);
+						if (el) {
+							gsap.to(el, {
+								x: index < 3 ? index * 10 : 0,
+								y: index < 3 ? index * 10 : 0,
+								duration: 0.8,
+								ease: 'power2.inOut',
+								immediateRender: false
+							});
+						}
+					});
+				}, 100);
+			}
+		}).to(cardEl, {
+			...tweenProps,
+			duration: 0.4,
+			ease: 'power2.out',
+			immediateRender: false
+		});
 	}
 </script>
 
