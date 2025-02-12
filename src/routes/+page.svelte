@@ -1,21 +1,12 @@
 <script lang="ts">
-	/**
-	 * +page.svelte:
-	 * SvelteKit のトップレベルページとして機能し、
-	 * Stack.svelte（カードスタック UI）を呼び出す。
-	 */
-
-	// Stack コンポーネントをインポート
 	import Stack from '$lib/Stack.svelte';
+	import Background from '$lib/Background.svelte';
 </script>
 
-<!-- 
-  Google 方式コメント:
-  メインページのレイアウト。ここでは最小限の例として、
-  ただちに Stack コンポーネントを配置している。
-  Tailwind によりスクリーンサイズを占有させるなどを行う。
--->
-<div class="w-full h-screen bg-gray-100">
-	<!-- カードスタックを表示 -->
+<!-- 背景コンポーネント -->
+<Background />
+
+<!-- コンテンツ部分。relative と z-index で背景の上に表示 -->
+<div class="relative z-10 ">
 	<Stack />
 </div>

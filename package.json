@@ -18,7 +18,7 @@
 		"@eslint/js": "^9.18.0",
 		"@sveltejs/adapter-auto": "^4.0.0",
 		"@sveltejs/adapter-cloudflare": "^5.0.2",
-		"@sveltejs/kit": "^2.16.0",
+		"@sveltejs/kit": "^2.17.1",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
 		"autoprefixer": "^10.4.20",
 		"bits-ui": "0.22.0",
@@ -31,6 +31,7 @@
 		"postcss": "^8.5.2",
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.3",
+		"shadcn-ui": "^0.9.4",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
 		"tailwind-merge": "^3.0.1",
@@ -41,15 +42,21 @@
 		"vite": "^6.0.0",
 		"wrangler": "^3.108.1"
 	},
-	"packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+	"packageManager": "yarn@4.6.0",
 	"dependencies": {
 		"@tailwindcss/vite": "^4.0.6",
+		"add": "^2.0.6",
+		"button": "^1.1.1",
+		"card": "^2.5.4",
+		"dlx": "^0.2.1",
 		"flowbite": "^3.1.2",
 		"flowbite-svelte": "^0.47.4",
 		"flowbite-svelte-icons": "^2.0.2",
 		"gsap": "^3.12.7",
 		"init": "^0.1.2",
 		"install": "^0.13.0",
+		"lucide-svelte": "^0.475.0",
+		"shadcn": "^2.3.0",
 		"shadcn-svelte": "^0.14.0"
 	}
 }

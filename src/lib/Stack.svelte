@@ -2,54 +2,52 @@
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import CardOne from '$lib/CardOne.svelte';
-	import CardTwo from '$lib/CardTwo.svelte';
-	import CardThree from '$lib/CardThree.svelte';
+	import CardSNS from '$lib/CardSNS.svelte';
+	import CardKalytero from '$lib/CardKalytero.svelte';
+	import CardGakuyukai from '$lib/CardGakuyukai.svelte';
+	import CardPemdemy from '$lib/CardPemdemy.svelte';
 
 	/**
 	 * カードの順序を管理する配列
 	 * クリックで順番を入れ替え、最後まで行ったら先頭に戻す
 	 */
-	let cards = [0, 1, 2];
+	let cards = [0, 1, 2, 3,4];
 
 	/**
-	 * 各カードの初期位置（x, y オフセット）を GSAP でセットする
+	 * 各カードの初期位置を GSAP でセット（2枚目までずらす）
 	 */
 	onMount(() => {
 		cards.forEach((id, index) => {
 			const el = document.getElementById(`card-${id}`);
 			if (el) {
-				gsap.set(el, { x: index * 20, y: index * 10 });
+				gsap.set(el, { x: index < 3 ? index * 10 : 0, y: index < 3 ? index * 10 : 0 });
 			}
 		});
 	});
 
 	/**
-	 * トップカード（常に cards[0]）がクリックされたときのアニメーションと順序入れ替えを実行する
-	 *
-	 * @param cardId - クリックされたカードの ID (0, 1, 2)
+	 * クリック時のアニメーション
 	 */
 	function handleCardClick(cardId: number): void {
-		// クリック可能なのは常に最前面のカードのみ
 		if (cardId !== cards[0]) return;
 		const cardEl = document.getElementById(`card-${cardId}`);
 		if (!cardEl) return;
 
 		gsap
 			.timeline({
-				immediateRender: false, // 不要なレンダリングを抑制
+				immediateRender: false,
 				onComplete: () => {
-					// アニメーション完了後、100ms 程度待ってから順序入れ替え＆再配置を実行
 					setTimeout(() => {
-						// 先頭カードを末尾に回す（カード順序の更新）
+						// 先頭カードを末尾に移動
 						cards = [...cards.slice(1), cards[0]];
 
-						// 新しい順序に合わせ、各カードの x, y オフセットを滑らかに再配置する
+						// 2枚目までオフセットを適用し、それ以降は固定
 						cards.forEach((id, index) => {
 							const el = document.getElementById(`card-${id}`);
 							if (el) {
 								gsap.to(el, {
-									x: index * 20,
-									y: index * 10,
+									x: index < 3 ? index * 10 : 0,
+									y: index < 3 ? index * 10 : 0,
 									duration: 0.8,
 									ease: 'power2.inOut',
 									immediateRender: false
@@ -59,42 +57,38 @@
 					}, 100);
 				}
 			})
-			// (1) トップカードを右方向へ滑らかに移動（引き抜く動き）
 			.to(cardEl, {
-				x: 350,
-				duration: 0.5,
+				y: -350,
+				duration: 0.4,
 				ease: 'power2.out',
 				immediateRender: false
 			})
-			// (2) その後、下方向へ滑らかに移動し、スタックの下に挟む
-			.to(cardEl, {
-				y: 50,
-				duration: 0.4,
-				ease: 'power2.inOut',
-				immediateRender: false
-			});
 	}
 </script>
 
 <!-- メインレイアウト -->
 <div
-	class="flex items-center justify-center min-h-screen bg-gradient-to-r from-primary-300 to-purple-600"
+	class="flex items-center justify-center min-h-screen "
 >
 	<!-- カードスタック用コンテナ（3D 表現用の perspective を設定） -->
-	<div class="relative w-72 h-96 perspective-container">
+	<div class="relative w-[90%] h-[600px] md:w-[910px] md:h-[550px] perspective-container backdrop-blur-3xl">
 		{#each cards as cardId (cardId)}
 			<div
 				id="card-{cardId}"
-				class="absolute top-0 left-0 w-72 h-96 cursor-pointer"
+				class="absolute top-0 left-0 w-[90%] h-[600px] md:w-[910px] md:h-[550px] cursor-pointer"
 				on:click={() => handleCardClick(cardId)}
 				style="z-index: {3 - cards.indexOf(cardId)};"
 			>
 				{#if cardId === 0}
 					<CardOne />
 				{:else if cardId === 1}
-					<CardTwo />
+					<CardSNS />
+				{:else if cardId === 2}
+					<CardKalytero />
+				{:else if cardId === 3}
+					<CardGakuyukai />
 				{:else}
-					<CardThree />
+					<CardPemdemy />
 				{/if}
 			</div>
 		{/each}
