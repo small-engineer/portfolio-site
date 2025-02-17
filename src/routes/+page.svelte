@@ -17,7 +17,14 @@
 		CardPemdemy
 	];
 
-	// 目次に表示する各カードのラベル
+	const bgImages = [
+		"/background1.webp",
+		"/background2.webp",
+		"/background3.webp",
+		"/background4.webp",
+		"/background5.webp"
+	];
+
 	const cardLabels = ['自己紹介', 'SNSリンク', 'Kalytero', '学友会', 'Pemdemy'];
 	
 </script>
@@ -26,5 +33,8 @@
 <Background />
 
 <div class="relative z-10 ">
-	<Stack {cardComponents} {cardLabels} />
+	<Stack 	
+	cardComponents={cardComponents}
+	cardLabels={cardLabels}
+	backgroundImages={bgImages} />
 </div>

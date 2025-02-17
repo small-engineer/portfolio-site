@@ -10,7 +10,7 @@
 </script>
 
 <Card
-	class="md:min-h-[420px] min-h-[600px] bg-gray-800/80 mx-auto shadow-xl transition-transform duration-300 card-size"
+	class="md:min-h-[420px] min-h-[600px] backdrop-blur-2xl  bg-gray-800/80 mx-auto shadow-xl transition-transform duration-300 card-size"
 	style="backdrop-filter: blur(10px);"
 >
 	<CardContent class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">

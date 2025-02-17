@@ -20,6 +20,7 @@
 		"@sveltejs/adapter-cloudflare": "^5.0.2",
 		"@sveltejs/kit": "^2.17.2",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"@types/mime-types": "^2.1.4",
 		"autoprefixer": "^10.4.20",
 		"bits-ui": "0.22.0",
 		"clsx": "^2.1.1",
@@ -48,6 +49,7 @@
 	"dependencies": {
 		"@radix-ui/react-dropdown-menu": "^2.1.6",
 		"@tailwindcss/vite": "^4.0.6",
+		"@types/node": "^22.13.4",
 		"add": "^2.0.6",
 		"button": "^1.1.1",
 		"card": "^2.5.4",
@@ -58,6 +60,7 @@
 		"gsap": "^3.12.7",
 		"init": "^0.1.2",
 		"install": "^0.13.0",
+		"mime-types": "^2.1.35",
 		"shadcn": "^2.3.0",
 		"shadcn-svelte": "^0.14.0"
 	}

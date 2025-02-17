@@ -1,72 +1,83 @@
-<script lang="ts">
-	// 特にロジックは不要。必要に応じて動的パラメータなど追加可能。
+<script>
+	import { backgroundUrl } from '$lib/stores';
+
+	let prevUrl = '';
+	let currentUrl = '';
+	let showPrev = false;
+	let showCurrent = false;
+
+	backgroundUrl.subscribe((newUrl) => {
+		if (!newUrl || newUrl === currentUrl) return;
+
+		// 古い背景を前面に設定
+		prevUrl = currentUrl;
+		showPrev = true;
+		showCurrent = false;
+
+		// 新しい背景をセット
+		currentUrl = newUrl;
+
+		// 画像をプリロードしてスムーズに切り替え
+		const img = new Image();
+		img.onload = () => {
+			showCurrent = true;
+			setTimeout(() => {
+				showPrev = false;
+			}, 600);
+		};
+
+		img.src = newUrl;
+	});
 </script>
 
-<div class="background">
-	<div class="animated-gradient"></div>
-	<div class="frosted-glass"></div>
+<!-- 背景レイヤー（前の画像） -->
+<div
+	class="bg-layer"
+	style="
+		background-image: url({prevUrl});
+		opacity: {showPrev ? 1 : 0};
+		transition: opacity 0.3s, linear 0.3s;
+	">
 </div>
 
+<!-- 背景レイヤー（現在の画像） -->
+<div
+	class="bg-layer"
+	style="
+		background-image: url({currentUrl});
+		opacity: {showCurrent ? 1 : 0};
+		transition: opacity 0.3s, linear 0.3s;
+	">
+</div>
+<!-- フロストガラス効果 -->
+<div class="frosted-glass"></div>
+
 <style>
-	/* 全画面に広がる背景 */
-	.background {
-		position: fixed;
-		top: 0;
-		left: 0;
+	/** 
+	 * 背景画像レイヤー: 画面全体を覆い、スムーズなフェードを適用
+	 */
+	.bg-layer {
+		position: absolute;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
 		width: 100%;
 		height: 100%;
-		z-index: -1; /* コンテンツの背面に配置 */
-		overflow: hidden;
+		top: 0;
+		left: 0;
 	}
 
-	/* 蠢くグラデーションアニメーション */
-	.animated-gradient {
-		position: absolute;
-		width: 200%;
-		height: 200%;
-		background: linear-gradient(45deg, #ff6ec4, #7873f5, #4adede, #48c6ef);
-		background-size: 200% 200%;
-		animation: gradientAnimation 20s ease infinite;
-	}
-
-	@keyframes gradientAnimation {
-		0% {
-			transform: translate(0%, 0%);
-		}
-		50% {
-			transform: translate(-50%, -50%);
-		}
-		100% {
-			transform: translate(0%, 0%);
-		}
-	}
-
-	/* 曇りガラス効果 */
+	/** 
+	 * フロストガラス効果オーバーレイ
+	 */
 	.frosted-glass {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: rgba(255, 255, 255, 0.2);
-		backdrop-filter: blur(10px);
-	}
-
-	@keyframes slimeMove {
-		0% {
-			top: 20%;
-			left: 10%;
-			transform: scale(1);
-		}
-		50% {
-			top: 50%;
-			left: 70%;
-			transform: scale(1.2);
-		}
-		100% {
-			top: 20%;
-			left: 10%;
-			transform: scale(1);
-		}
+		background: rgba(186, 186, 201, 0.1);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
 	}
 </style>
