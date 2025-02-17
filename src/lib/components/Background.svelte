@@ -2,6 +2,11 @@
 	// 特にロジックは不要。必要に応じて動的パラメータなど追加可能。
 </script>
 
+<div class="background">
+	<div class="animated-gradient"></div>
+	<div class="frosted-glass"></div>
+</div>
+
 <style>
 	/* 全画面に広がる背景 */
 	.background {
@@ -47,7 +52,6 @@
 		backdrop-filter: blur(10px);
 	}
 
-
 	@keyframes slimeMove {
 		0% {
 			top: 20%;
@@ -66,8 +70,3 @@
 		}
 	}
 </style>
-
-<div class="background">
-	<div class="animated-gradient"></div>
-	<div class="frosted-glass"></div>
-</div>

@@ -1,18 +1,19 @@
 <script lang="ts">
-	import { Card, CardContent } from "$lib/components/ui/card";
-	import { Button } from "$lib/components/ui/button";
+	import { Card, CardContent } from '$lib/components/ui/card';
+	import { Button } from '$lib/components/ui/button';
 
 	const kalyteroInfo = {
-		title: "Kalyteroでの仕事",
-		role: "COO",
-		description: "2023年に起業したKalyteroではソフトウェア開発のアウトソーシングや、コンサルティング等を行っています",
+		title: 'Kalyteroでの仕事',
+		role: 'COO',
+		description:
+			'2023年に起業したKalyteroではソフトウェア開発のアウトソーシングや、コンサルティング等を行っています',
 		details: [
-			"クライアントとのコミュニケーション",
-			"プロジェクトマネジメント",
-			"React系フレームワークでのWEB開発",
-			"AWS,Cloudflareなどのインフラ構築"
+			'クライアントとのコミュニケーション',
+			'プロジェクトマネジメント',
+			'React系フレームワークでのWEB開発',
+			'AWS,Cloudflareなどのインフラ構築'
 		],
-		website: "https://kalytero.ne.jp"
+		website: 'https://kalytero.ne.jp'
 	};
 </script>
 
@@ -25,7 +26,8 @@
 			{kalyteroInfo.title}
 		</h2>
 		<p class="text-lg text-gray-300">
-			<strong>役職:</strong> {kalyteroInfo.role}
+			<strong>役職:</strong>
+			{kalyteroInfo.role}
 		</p>
 		<p class="text-md text-gray-400">
 			{kalyteroInfo.description}
@@ -37,7 +39,6 @@
 				{/each}
 			</ul>
 			<Button
-				asChild
 				class="mt-4 md:mt-0 px-6 py-3 text-white font-semibold bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105"
 			>
 				<a

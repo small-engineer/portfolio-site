@@ -1,22 +1,20 @@
 <script lang="ts">
 	// 必要なコンポーネントとアイコンのインポート
-	import { Card, CardContent } from "$lib/components/ui/card";
+	import { Card, CardContent } from '$lib/components/ui/card';
 
 	// プロフィールデータ（仮データ）
 	const profile = {
-		name: "若宮佑真",
-		role: "合同会社Kalytero COO",
-		description: "Do One Thing and Do It Well",
-		details: [
-			"情報経営イノベーション専門職大学 在学中",
-			"埼玉県 朝霞市在住",
-			"茨城県 古河市出身"
-		]
+		name: '若宮佑真',
+		role: '合同会社Kalytero COO',
+		description: 'Do One Thing and Do It Well',
+		details: ['情報経営イノベーション専門職大学 在学中', '埼玉県 朝霞市在住', '茨城県 古河市出身']
 	};
 </script>
 
-<Card class="md:min-h-80 min-h-[600px] bg-gray-800/80 mx-auto shadow-xl rounded-xl overflow-hidden transition-transform duration-300"
-      style="backdrop-filter: blur(10px);">
+<Card
+	class="md:min-h-80 min-h-[600px] bg-gray-800/80 mx-auto shadow-xl rounded-xl overflow-hidden transition-transform duration-300"
+	style="backdrop-filter: blur(10px);"
+>
 	<CardContent class="p-6 flex flex-col md:flex-row items-center md:items-start">
 		<!-- 左カラム: アイコンと名前・役職 -->
 		<div class="flex flex-col items-center md:items-start md:w-1/3">

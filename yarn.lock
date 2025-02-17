@@ -1444,9 +1444,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/kit@npm:^2.17.1":
-  version: 2.17.1
-  resolution: "@sveltejs/kit@npm:2.17.1"
+"@sveltejs/kit@npm:^2.17.2":
+  version: 2.17.2
+  resolution: "@sveltejs/kit@npm:2.17.2"
   dependencies:
     "@types/cookie": "npm:^0.6.0"
     cookie: "npm:^0.6.0"
@@ -1465,7 +1465,7 @@ __metadata:
     vite: ^5.0.3 || ^6.0.0
   bin:
     svelte-kit: svelte-kit.js
-  checksum: 10c0/30b5e458ab3f648e1a3edfa57af6dd9e7d0587232f6de630fe2b061840fc742276801359d4bb0e5c48ee2983e97dee878567503b149fb0679fd0e4534e3e3db2
+  checksum: 10c0/b470dbe1a8b4b5953ed18293f07187e9975619b309e18e76239ae5be1987e204100c1260d13a2a64a1457b1a88d287f430d6e30c64a1f9f783e5717b0b6442a5
   languageName: node
   linkType: hard
 
@@ -1482,7 +1482,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:^5.0.0":
+"@sveltejs/vite-plugin-svelte@npm:^5.0.3":
   version: 5.0.3
   resolution: "@sveltejs/vite-plugin-svelte@npm:5.0.3"
   dependencies:
@@ -5721,9 +5721,49 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte@npm:^5.0.0":
-  version: 5.19.10
-  resolution: "svelte@npm:5.19.10"
+"svelte-preprocess@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "svelte-preprocess@npm:6.0.3"
+  peerDependencies:
+    "@babel/core": ^7.10.2
+    coffeescript: ^2.5.1
+    less: ^3.11.3 || ^4.0.0
+    postcss: ^7 || ^8
+    postcss-load-config: ">=3"
+    pug: ^3.0.0
+    sass: ^1.26.8
+    stylus: ">=0.55"
+    sugarss: ^2.0.0 || ^3.0.0 || ^4.0.0
+    svelte: ^4.0.0 || ^5.0.0-next.100 || ^5.0.0
+    typescript: ^5.0.0
+  peerDependenciesMeta:
+    "@babel/core":
+      optional: true
+    coffeescript:
+      optional: true
+    less:
+      optional: true
+    postcss:
+      optional: true
+    postcss-load-config:
+      optional: true
+    pug:
+      optional: true
+    sass:
+      optional: true
+    stylus:
+      optional: true
+    sugarss:
+      optional: true
+    typescript:
+      optional: true
+  checksum: 10c0/ee6d92f0ae9b00830cae764ce7c286b83e52f142fb617a932bd81f09b4b29c8b2c02ef5e4b6bbade9729cc7c65f7fef55e1a366758766b15a06538df1e55e8ce
+  languageName: node
+  linkType: hard
+
+"svelte@npm:^5.20.1":
+  version: 5.20.1
+  resolution: "svelte@npm:5.20.1"
   dependencies:
     "@ampproject/remapping": "npm:^2.3.0"
     "@jridgewell/sourcemap-codec": "npm:^1.5.0"
@@ -5739,7 +5779,7 @@ __metadata:
     locate-character: "npm:^3.0.0"
     magic-string: "npm:^0.30.11"
     zimmerframe: "npm:^1.1.2"
-  checksum: 10c0/583d5188e6ed2253ed5e2adf2532c1a82da4bce5c9bce092ea76466511f6c5865f7316774fa753c92403c1426f7bf68440ce38cc244f92fc5c07b36f8c249dc3
+  checksum: 10c0/e975beb9a74e98cc9abca7926822045de7b5f77b400d102feb444927a1789f1f961718ab05cb8d930380c12f11af4ca211744dd04ca2988d0adcb6e9af7c7b1f
   languageName: node
   linkType: hard
 
@@ -6224,8 +6264,8 @@ __metadata:
     "@eslint/js": "npm:^9.18.0"
     "@sveltejs/adapter-auto": "npm:^4.0.0"
     "@sveltejs/adapter-cloudflare": "npm:^5.0.2"
-    "@sveltejs/kit": "npm:^2.17.1"
-    "@sveltejs/vite-plugin-svelte": "npm:^5.0.0"
+    "@sveltejs/kit": "npm:^2.17.2"
+    "@sveltejs/vite-plugin-svelte": "npm:^5.0.3"
     "@tailwindcss/vite": "npm:^4.0.6"
     add: "npm:^2.0.6"
     autoprefixer: "npm:^10.4.20"
@@ -6252,8 +6292,9 @@ __metadata:
     shadcn: "npm:^2.3.0"
     shadcn-svelte: "npm:^0.14.0"
     shadcn-ui: "npm:^0.9.4"
-    svelte: "npm:^5.0.0"
+    svelte: "npm:^5.20.1"
     svelte-check: "npm:^4.0.0"
+    svelte-preprocess: "npm:^6.0.3"
     tailwind-merge: "npm:^3.0.1"
     tailwind-variants: "npm:^0.3.1"
     tailwindcss: "npm:^4.0.6"
