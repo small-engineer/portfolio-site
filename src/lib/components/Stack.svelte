@@ -53,7 +53,7 @@
 		isAnimating = true;
 
 		const isMobile = window.innerWidth < 768;
-		const tweenProps = isMobile ? { x: 330 } : { y: -350 };
+		const tweenProps = isMobile ? { x: 330 } : { y: -430 };
 
 		gsap
 			.timeline({
@@ -110,7 +110,7 @@
 		}
 
 		const isMobile = window.innerWidth < 768;
-		const tweenProps = isMobile ? { x: 330 } : { y: -350 };
+		const tweenProps = isMobile ? { x: 330 } : { y: -430 };
 
 		const aboveCards = cards.slice(0, idx);
 		const els = aboveCards.map((cid) => document.getElementById(`card-${cid}`)).filter(Boolean);
@@ -180,12 +180,12 @@
 
 	<!-- カードスタック用コンテナ -->
 	<div
-		class="relative w-[90%] h-[600px] md:w-[910px] md:h-[550px] perspective-container backdrop-blur-3xl"
+		class="relative w-[90%] h-[600px] md:w-[910px] md:h-[420px] perspective-container backdrop-blur-3xl"
 	>
 		{#each cards as cardId (cardId)}
 			<div
 				id="card-{cardId}"
-				class="absolute top-0 left-0 w-[90%] h-[600px] md:w-[910px] md:h-[550px] cursor-pointer"
+				class="absolute top-0 left-0 w-[90%] h-[600px] md:w-[910px] md:h-[420px] cursor-pointer"
 				on:click={() => handleCardClick(cardId)}
 				on:keydown={(e) => e.key === 'Enter' && handleCardClick(cardId)}
 				role="button"
@@ -200,7 +200,7 @@
 
 <style>
 	.perspective-container {
-		perspective: 800px;
+		perspective: 600px;
 		transform-style: preserve-3d;
 	}
 </style>
