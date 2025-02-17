@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
-	import { Button } from "$lib/components/ui/button";
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
+	import { Button } from '$lib/components/ui/button';
 
 	export let cards: number[];
 	export let labels: string[];
@@ -17,71 +17,67 @@
     - md:p-5 や md:w-auto などで通常レイアウト
 -->
 <div
-  class="
-    md:static 
-    md:w-auto
-    fixed top-1 left-1 min-w-28
-    z-50
-    flex
-    border-gray-300 border
-    bg-black/90
+	class="
+    fixed
+    top-1
+    left-1 z-50 flex min-w-28
     rounded-xl
+    border
+    border-white bg-gray-900/80
+    p-0 shadow-2xl
+    backdrop-blur-2xl
     duration-300
-    shadow-2xl
-    p-0
+    md:static
+    md:w-auto
     md:p-5
-    backdrop-blur-xl
   "
 >
-  <!-- PC向け: ボタン一覧 -->
-  <ul class="hidden md:flex flex-col items-center list-none p-0 m-0">
-    {#each cards as cardId}
-      <li>
-        <button
-          type="button"
-          on:click={() => onSelect(cardId)}
-          class="
-            cursor-pointer transition-colors text-center
-            mx-0 my-0 md:mx-0 md:my-2
-            p-2 md:p-4
-            bg-black/40
-            shadow-xl
-            rounded-xl
-            border border-gray-300
-            text-white
-            backdrop-blur-lg
-            hover:bg-gray-800/80
-            duration-300
+	<!-- PC向け: ボタン一覧 -->
+	<ul class="m-0 hidden list-none flex-col items-center p-0 md:flex">
+		{#each cards as cardId}
+			<li>
+				<button
+					type="button"
+					on:click={() => onSelect(cardId)}
+					class="
+            mx-0 my-0 cursor-pointer
+            rounded-xl border border-white bg-gray-900/80
+            p-2 text-center
+            text-white shadow-xl
+            backdrop-blur-2xl
+            transition-colors
+            duration-300 hover:bg-gray-800/80
+            md:mx-0
+            md:my-2
+            md:p-4
           "
-        >
-          {labels[cardId]}
-        </button>
-      </li>
-    {/each}
-  </ul>
+				>
+					{labels[cardId]}
+				</button>
+			</li>
+		{/each}
+	</ul>
 
-  <!-- スマホ向け: DropdownMenu -->
-  <div class="md:hidden relative">
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger asChild let:builder>
-        <Button builders={[builder]} variant="outline" class="text-white border-0 ">
-          カード一覧
-        </Button>
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Content
-        class="bg-black/80 rounded-xl shadow-xl text-white @-2"
-      >
-        <DropdownMenu.Group>
-          {#each cards as cardId}
-            <DropdownMenu.Item
-              on:click={() => onSelect(cardId)}
-              class="hover:bg-gray-800 w-full text-left"
-            >
-              {labels[cardId]}
-            </DropdownMenu.Item>
-          {/each}
-        </DropdownMenu.Group>
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
-  </div>
+	<!-- スマホ向け: DropdownMenu -->
+	<div class="relative md:hidden">
+		<DropdownMenu.Root>
+			<DropdownMenu.Trigger asChild let:builder>
+				<Button builders={[builder]} variant="outline" class="border-0 text-white ">
+					カード一覧
+				</Button>
+			</DropdownMenu.Trigger>
+			<DropdownMenu.Content class="@-2 rounded-xl bg-black/80 text-white shadow-xl">
+				<DropdownMenu.Group>
+					{#each cards as cardId}
+						<DropdownMenu.Item
+							on:click={() => onSelect(cardId)}
+							class="w-full text-left hover:bg-gray-700"
+						>
+							{labels[cardId]}
+						</DropdownMenu.Item>
+					{/each}
+				</DropdownMenu.Group>
+			</DropdownMenu.Content>
+		</DropdownMenu.Root>
+	</div>
 </div>

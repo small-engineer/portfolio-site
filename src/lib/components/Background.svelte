@@ -37,8 +37,8 @@
 		background-image: url({prevUrl});
 		opacity: {showPrev ? 1 : 0};
 		transition: opacity 0.3s, linear 0.3s;
-	">
-</div>
+	"
+></div>
 
 <!-- 背景レイヤー（現在の画像） -->
 <div
@@ -47,8 +47,8 @@
 		background-image: url({currentUrl});
 		opacity: {showCurrent ? 1 : 0};
 		transition: opacity 0.3s, linear 0.3s;
-	">
-</div>
+	"
+></div>
 <!-- フロストガラス効果 -->
 <div class="frosted-glass"></div>
 

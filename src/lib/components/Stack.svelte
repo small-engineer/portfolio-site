@@ -64,11 +64,11 @@
 				onComplete: () => {
 					setTimeout(() => {
 						cards = [...cards.slice(1), cards[0]];
-						
+
 						requestAnimationFrame(() => {
 							backgroundUrl.set(backgroundImages[cards[0]] || '');
 						});
-						
+
 						adjustCardPositions();
 						setTimeout(() => {
 							isAnimating = false;
@@ -82,7 +82,7 @@
 				ease: 'power2.out',
 				immediateRender: false
 			});
-		}
+	}
 
 	function handleIndexSelect(cardId: number) {
 		if (isAnimating) return;
@@ -114,43 +114,45 @@
 		const aboveCards = cards.slice(0, idx);
 		const els = aboveCards.map((cid) => document.getElementById(`card-${cid}`)).filter(Boolean);
 
-		gsap.timeline({
-			immediateRender: false,
-			onStart: () => {
-				els.forEach((el) => {
-					(el as HTMLElement).style.pointerEvents = 'none';
-				});
-			},
-			onComplete: () => {
-				requestAnimationFrame(() => {
-					setTimeout(() => {
-						const selectedCard = cards[idx];
-						const otherCards = cards.filter((id) => id !== selectedCard);
-						cards = [selectedCard, ...otherCards];
-						// 新しい先頭のカード背景に差し替え
-						requestAnimationFrame(() => {
-							backgroundUrl.set(backgroundImages[cards[0]] || '');
-						});
-						
-						aboveCards.forEach((cid) => {
-							const el = document.getElementById(`card-${cid}`);
-							if (el) el.style.zIndex = '';
-						});
-						adjustCardPositions();
-						
-						setTimeout(() => {
-							isAnimating = false;
-						}, RECLICK_DELAY_MS);
+		gsap
+			.timeline({
+				immediateRender: false,
+				onStart: () => {
+					els.forEach((el) => {
+						(el as HTMLElement).style.pointerEvents = 'none';
 					});
-				});
-			}
-		}).to(els, {
-			...tweenProps,
-			duration: 0.4,
-			ease: 'power2.out',
-			stagger: 0.1,
-			immediateRender: false
-		});
+				},
+				onComplete: () => {
+					requestAnimationFrame(() => {
+						setTimeout(() => {
+							const selectedCard = cards[idx];
+							const otherCards = cards.filter((id) => id !== selectedCard);
+							cards = [selectedCard, ...otherCards];
+							// 新しい先頭のカード背景に差し替え
+							requestAnimationFrame(() => {
+								backgroundUrl.set(backgroundImages[cards[0]] || '');
+							});
+
+							aboveCards.forEach((cid) => {
+								const el = document.getElementById(`card-${cid}`);
+								if (el) el.style.zIndex = '';
+							});
+							adjustCardPositions();
+
+							setTimeout(() => {
+								isAnimating = false;
+							}, RECLICK_DELAY_MS);
+						});
+					});
+				}
+			})
+			.to(els, {
+				...tweenProps,
+				duration: 0.4,
+				ease: 'power2.out',
+				stagger: 0.1,
+				immediateRender: false
+			});
 	}
 
 	function adjustCardPositions() {
@@ -169,31 +171,29 @@
 	}
 </script>
 
-<div class="min-h-screen flex md:flex-row flex-col items-center justify-center gap-2 md:gap-6">
+<div class="flex min-h-screen flex-col items-center justify-center gap-2 md:flex-row md:gap-6">
 	<!-- 目次表示 -->
 	<div>
 		<CardIndex cards={staticCards} labels={cardLabels} onSelect={handleIndexSelect} />
 	</div>
 
 	<!-- カードスタック用コンテナ -->
-	<div
-		class="relative w-[90%] h-[600px] md:w-[910px] md:h-[420px] perspective-container"
-	>
-	<div class="backdrop-blur-3xl">
-		{#each cards as cardId (cardId)}
-			<div
-				id="card-{cardId}"
-				class="absolute top-0 left-0 w-[90%] h-[600px] md:w-[910px] md:h-[420px] cursor-pointer"
-				on:click={() => handleCardClick(cardId)}
-				on:keydown={(e) => e.key === 'Enter' && handleCardClick(cardId)}
-				role="button"
-				tabindex="0"
-				style="z-index: {cards.length - cards.indexOf(cardId)};"
-			>
-				<svelte:component this={cardComponents[cardId]} />
-			</div>
-		{/each}
-	</div>
+	<div class="perspective-container relative h-[600px] w-[90%] md:h-[420px] md:w-[910px]">
+		<div class="backdrop-blur-3xl">
+			{#each cards as cardId (cardId)}
+				<div
+					id="card-{cardId}"
+					class="absolute top-0 left-0 h-[600px] w-[90%] cursor-pointer md:h-[420px] md:w-[910px]"
+					on:click={() => handleCardClick(cardId)}
+					on:keydown={(e) => e.key === 'Enter' && handleCardClick(cardId)}
+					role="button"
+					tabindex="0"
+					style="z-index: {cards.length - cards.indexOf(cardId)};"
+				>
+					<svelte:component this={cardComponents[cardId]} />
+				</div>
+			{/each}
+		</div>
 	</div>
 </div>
 

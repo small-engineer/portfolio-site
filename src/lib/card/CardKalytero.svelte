@@ -18,11 +18,11 @@
 </script>
 
 <Card
-	class="md:md:min-h-[420px] min-h-[600px] backdrop-blur-2xl bg-gray-800/80 mx-auto shadow-xl transition-transform duration-300 card-size"
+	class="card-size mx-auto min-h-[600px] border border-white bg-gray-800/80 shadow-xl backdrop-blur-2xl transition-transform duration-300 md:min-h-[420px]"
 	style="backdrop-filter: blur(10px);"
 >
-	<CardContent class="flex flex-col items-start p-8 space-y-4">
-		<h2 class="text-4xl font-bold text-white border-b-2 border-blue-500 pb-2">
+	<CardContent class="flex flex-col items-start space-y-4 p-8">
+		<h2 class="border-b-2 border-blue-500 pb-2 text-4xl font-bold text-white">
 			{kalyteroInfo.title}
 		</h2>
 		<p class="text-lg text-gray-300">
@@ -32,14 +32,14 @@
 		<p class="text-md text-gray-400">
 			{kalyteroInfo.description}
 		</p>
-		<div class="w-full flex flex-col md:flex-row md:items-center justify-between gap-4">
-			<ul class="list-disc list-inside text-gray-200 space-y-1">
+		<div class="flex w-full flex-col justify-between gap-4 md:flex-row md:items-center">
+			<ul class="list-inside list-disc space-y-1 text-gray-200">
 				{#each kalyteroInfo.details as detail}
 					<li>{detail}</li>
 				{/each}
 			</ul>
 			<Button
-				class="mt-4 md:mt-0 px-6 py-3 text-white font-semibold bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105"
+				class="mt-4 transform rounded-full bg-blue-600 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-blue-700 hover:shadow-xl md:mt-0"
 			>
 				<a
 					href={kalyteroInfo.website}

@@ -16,10 +16,10 @@
 </script>
 
 <Card
-	class="md:min-h-[420px] min-h-[600px] backdrop-blur-2xl backdrop-blur-2xl bg-gray-800/80 mx-auto shadow-xl transition-transform duration-300 card-size"
+	class="card-size mx-auto min-h-[600px] border border-white bg-gray-800/80 shadow-xl backdrop-blur-2xl transition-transform duration-300 md:min-h-[420px]"
 	style="backdrop-filter: blur(10px);"
 >
-	<CardContent class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+	<CardContent class="grid grid-cols-1 items-center gap-6 p-6 md:grid-cols-2">
 		<!-- 左カラム：タイトルと説明 -->
 		<div class="flex flex-col space-y-3">
 			<h2 class="text-3xl font-extrabold text-blue-100">
@@ -37,7 +37,7 @@
 		<ul class="space-y-2">
 			{#each pemdemyInfo.details as detail}
 				<li class="flex items-center">
-					<div class="w-3 h-3 bg-blue-400 rounded-full mr-3"></div>
+					<div class="mr-3 h-3 w-3 rounded-full bg-blue-400"></div>
 					<span class="text-blue-100">{detail}</span>
 				</li>
 			{/each}

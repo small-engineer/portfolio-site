@@ -29,21 +29,21 @@
 </script>
 
 <Card
-	class="md:min-h-[420px] min-h-[600px] backdrop-blur-2xl bg-gray-800/80 mx-auto shadow-xl transition-transform duration-300 card-size"
+	class=" card-size mx-auto min-h-[600px] border border-white bg-gray-800/80 shadow-xl backdrop-blur-2xl transition-transform duration-300 md:min-h-[420px]"
 	style="backdrop-filter: blur(10px);"
 >
-	<CardContent class="flex flex-col items-center p-6 space-y-4">
+	<CardContent class="flex flex-col items-center space-y-4 p-6">
 		<!-- カードタイトル -->
 		<h2 class="text-3xl font-extrabold text-white">SNS Links</h2>
 
 		<!-- SNSボタン群 -->
-		<div class="grid grid-cols-2 gap-3 w-full">
+		<div class="grid w-full grid-cols-2 gap-3">
 			{#each socialLinks as link}
 				<a href={link.url} target="_blank" class="w-full" on:click|stopPropagation>
 					<Button
-						class="w-full flex items-center justify-center gap-2 text-white  {link.color} hover:opacity-80"
+						class="flex w-full items-center justify-center gap-2 text-white  {link.color} hover:opacity-80"
 					>
-						<svelte:component this={link.icon} class="w-5 h-5" />
+						<svelte:component this={link.icon} class="h-5 w-5" />
 						{link.name}
 					</Button>
 				</a>

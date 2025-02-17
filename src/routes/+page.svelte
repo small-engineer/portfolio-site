@@ -10,34 +10,22 @@
 	import Cursor from '$lib/components/Cursor.svelte';
 
 	// カード用コンポーネントの配列
-	const cardComponents = [
-		CardOne,
-		CardSNS,
-		CardKalytero,
-		CardGakuyukai,
-		CardPemdemy
-	];
+	const cardComponents = [CardOne, CardSNS, CardKalytero, CardGakuyukai, CardPemdemy];
 
-	const bgImages = [
-		"/background1.webp",
-		"/background2.webp",
-		"/background3.webp",
-		"/background4.webp",
-		"/background5.webp"
-	];
+	const bgImages = ['/bg1.webp', '/bg2.webp', '/kalytero.webp', '/gakuyukai.webp', '/pemdemy.webp'];
 
 	const cardLabels = ['自己紹介', 'SNSリンク', 'Kalytero', '学友会', 'Pemdemy'];
 
-
 	async function preloadImages(images: string[]) {
 		await Promise.all(
-			images.map((src) =>
-				new Promise((resolve) => {
-					const img = new Image();
-					img.src = src;
-					img.onload = resolve;
-					img.onerror = resolve;
-				})
+			images.map(
+				(src) =>
+					new Promise((resolve) => {
+						const img = new Image();
+						img.src = src;
+						img.onload = resolve;
+						img.onerror = resolve;
+					})
 			)
 		);
 	}
@@ -50,9 +38,6 @@
 <Cursor />
 <Background />
 
-<div class="relative z-10 ">
-	<Stack 	
-	cardComponents={cardComponents}
-	cardLabels={cardLabels}
-	backgroundImages={bgImages} />
+<div class="relative z-10">
+	<Stack {cardComponents} {cardLabels} backgroundImages={bgImages} />
 </div>
