@@ -8,6 +8,7 @@
 	import Stack from '$lib/components/Stack.svelte';
 	import Background from '$lib/components/Background.svelte';
 	import Cursor from '$lib/components/Cursor.svelte';
+	import Fotter from '$lib/components/Footer.svelte';
 
 	// カード用コンポーネントの配列
 	const cardComponents = [CardOne, CardSNS, CardKalytero, CardGakuyukai, CardPemdemy];
@@ -41,3 +42,5 @@
 <div class="relative z-10">
 	<Stack {cardComponents} {cardLabels} backgroundImages={bgImages} />
 </div>
+
+<Fotter />

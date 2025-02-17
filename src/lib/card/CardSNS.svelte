@@ -8,6 +8,12 @@
 	const socialLinks = [
 		{ name: 'Twitter', url: 'https://x.com/WakamiyaYuma', icon: Twitter, color: 'bg-blue-400' },
 		{
+			name: 'Facebook',
+			url: 'https://www.facebook.com/yuma.wakamiya',
+			icon: Facebook,
+			color: 'bg-blue-800'
+		},
+		{
 			name: 'GitHub',
 			url: 'https://github.com/small-engineer',
 			icon: Github,
@@ -18,12 +24,6 @@
 			url: 'https://www.linkedin.com/in/yuma-wakamiya/',
 			icon: Linkedin,
 			color: 'bg-blue-600'
-		},
-		{
-			name: 'Facebook',
-			url: 'https://www.facebook.com/yuma.wakamiya',
-			icon: Facebook,
-			color: 'bg-blue-800'
 		}
 	];
 </script>
