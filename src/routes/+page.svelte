@@ -1,5 +1,6 @@
 <script lang="ts">
 	import CardOne from '$lib/card/CardOne.svelte';
+	import { onMount } from 'svelte';
 	import CardSNS from '$lib/card/CardSNS.svelte';
 	import CardKalytero from '$lib/card/CardKalytero.svelte';
 	import CardGakuyukai from '$lib/card/CardGakuyukai.svelte';
@@ -26,7 +27,24 @@
 	];
 
 	const cardLabels = ['自己紹介', 'SNSリンク', 'Kalytero', '学友会', 'Pemdemy'];
-	
+
+
+	async function preloadImages(images: string[]) {
+		await Promise.all(
+			images.map((src) =>
+				new Promise((resolve) => {
+					const img = new Image();
+					img.src = src;
+					img.onload = resolve;
+					img.onerror = resolve;
+				})
+			)
+		);
+	}
+
+	onMount(() => {
+		preloadImages(bgImages);
+	});
 </script>
 
 <Cursor />
