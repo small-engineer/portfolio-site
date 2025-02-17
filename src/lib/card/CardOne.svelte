@@ -15,7 +15,7 @@
 	};
 </script>
 
-<Card class="md:md:min-h-[420px] min-h-[600px] bg-gray-800/80 mx-auto shadow-xl rounded-xl overflow-hidden transition-transform duration-300"
+<Card class="md:min-h-[420px] min-h-[600px] bg-gray-800/80 mx-auto shadow-xl rounded-xl overflow-hidden transition-transform duration-300"
       style="backdrop-filter: blur(10px);">
 	<CardContent class="p-6 flex flex-col md:flex-row items-center md:items-start">
 		<!-- 左カラム: アイコンと名前・役職 -->
