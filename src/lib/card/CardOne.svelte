@@ -5,7 +5,6 @@
 	import { ScrollArea } from "$lib/components/ui/scroll-area/index.js";
 	import { Separator } from "$lib/components/ui/separator/index.js";
 
-	// プロフィールデータ
 	const profile = {
 		name: '若宮佑真',
 		role: '合同会社Kalytero COO',
@@ -40,7 +39,7 @@
 			<p class="text-md mb-4 text-gray-200 italic">{profile.description}</p>
 
 			<ScrollArea class="md:h-80 h-72  w-full overflow-y-auto border rounded-md p-4">
-				<div class="space-y-4 pl-4 -mb-10">  <!-- 内部の高さを適切に確保 -->
+				<div class="space-y-4 pl-4 -mb-10">
 					<Timeline order="default">
 						{#each profile.details as detail}
 							<TimelineItem title={detail.title} date={detail.date}>

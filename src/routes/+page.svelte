@@ -10,7 +10,6 @@
 	import Cursor from '$lib/components/Cursor.svelte';
 	import Fotter from '$lib/components/Footer.svelte';
 
-	// カード用コンポーネントの配列
 	const cardComponents = [CardOne, CardSNS, CardKalytero, CardGakuyukai, CardPemdemy];
 
 	const bgImages = ['/bg1.webp', '/bg2.webp', '/kalytero.webp', '/gakuyukai.webp', '/pemdemy.webp'];
@@ -35,6 +34,21 @@
 		preloadImages(bgImages);
 	});
 </script>
+
+<svelte:head>
+    <title>若宮 佑真 | Wakamiya Yuma</title>
+    <meta name="description" content="若宮 佑真 (Wakamiya Yuma) のプロフィールサイト">
+    <meta name="keywords" content="若宮佑真, Wakamiya Yuma, キーワード3">
+    <meta property="og:title" content="若宮 佑真 (Wakamiya Yuma) のプロフィールサイト">
+    <meta property="og:description" content="若宮 佑真 (Wakamiya Yuma) のプロフィールサイト">
+    <meta property="og:image" content="/site-image.jpeg">
+    <meta property="og:url" content="https://wakamiya.blog">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="若宮 佑真 (Wakamiya Yuma) のプロフィールサイト">
+    <meta name="twitter:description" content="若宮 佑真 (Wakamiya Yuma) のプロフィールサイト">
+    <meta name="twitter:image" content="/site-image.jpeg">
+</svelte:head>
+
 
 <Cursor />
 <Background />

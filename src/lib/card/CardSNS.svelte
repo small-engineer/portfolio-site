@@ -1,10 +1,8 @@
 <script lang="ts">
-	// 必要なコンポーネント・アイコンのインポート
 	import { Button } from '$lib/components/ui/button';
 	import { Card, CardContent } from '$lib/components/ui/card';
 	import { Github, Linkedin, Twitter, Instagram, Facebook } from 'lucide-svelte';
 
-	// 定数としてSNSリンク設定
 	const socialLinks = [
 		{ name: 'Twitter', url: 'https://x.com/WakamiyaYuma', icon: Twitter, color: 'bg-blue-400' },
 		{
@@ -33,10 +31,7 @@
 	style="backdrop-filter: blur(10px);"
 >
 	<CardContent class="flex flex-col items-center space-y-4 p-6">
-		<!-- カードタイトル -->
 		<h2 class="text-3xl font-extrabold text-white">SNS Links</h2>
-
-		<!-- SNSボタン群 -->
 		<div class="grid w-full grid-cols-2 gap-3">
 			{#each socialLinks as link}
 				<a href={link.url} target="_blank" class="w-full" on:click|stopPropagation>

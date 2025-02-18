@@ -2,17 +2,14 @@
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import CardIndex from '$lib/components/CardIndex.svelte';
-
-	// グローバルストアをインポート
 	import { backgroundUrl } from '$lib/stores';
 
-	// 親からカードのコンポーネント配列、ラベル配列、背景画像配列を受け取る
 	export let cardComponents: any[];
 	export let cardLabels: string[];
 	export let backgroundImages: string[];
 
 	/**
-	 * 各カードに割り当てる静的なIDの配列を生成する
+	 * 各カードに割り当てる静的なIDの配列を生成
 	 * 例: [0, 1, 2, ...]
 	 */
 	const staticCards: number[] = cardComponents.map((_, i) => i);

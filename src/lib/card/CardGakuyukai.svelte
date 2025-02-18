@@ -20,7 +20,6 @@
 	style="backdrop-filter: blur(10px);"
 >
 	<CardContent class="grid grid-cols-1 items-center gap-6 p-6 md:grid-cols-2">
-		<!-- 左カラム：タイトルと説明 -->
 		<div class="flex flex-col space-y-3">
 			<h2 class="text-3xl font-extrabold text-gray-100">
 				{pemdemyInfo.title}
@@ -33,7 +32,6 @@
 				{pemdemyInfo.description}
 			</p>
 		</div>
-		<!-- 右カラム：詳細項目をアイコン風に配置 -->
 		<ul class="space-y-2">
 			{#each pemdemyInfo.details as detail}
 				<li class="flex items-center">

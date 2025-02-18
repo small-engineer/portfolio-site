@@ -9,15 +9,11 @@
 	backgroundUrl.subscribe((newUrl) => {
 		if (!newUrl || newUrl === currentUrl) return;
 
-		// 古い背景を前面に設定
 		prevUrl = currentUrl;
 		showPrev = true;
 		showCurrent = false;
-
-		// 新しい背景をセット
 		currentUrl = newUrl;
 
-		// 画像をプリロードしてスムーズに切り替え
 		const img = new Image();
 		img.onload = () => {
 			showCurrent = true;
@@ -49,7 +45,6 @@
 		transition: opacity 0.3s, linear 0.3s;
 	"
 ></div>
-<!-- フロストガラス効果 -->
 <div class="frosted-glass"></div>
 
 <style>

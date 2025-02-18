@@ -1,9 +1,11 @@
 <script>
-	let { children } = $props();
 	import '../app.css';
 	import { onMount, onDestroy } from 'svelte';
 
+	/** @type {number} 現在のfaviconのインデックス */
 	let faviconIndex = 0;
+
+	/** @type {string[]} 使用するfaviconのリスト */
 	const favicons = [
 		'/fav1.ico', '/fav2.ico', '/fav3.ico', '/fav4.ico',
 		'/fav5.ico', '/fav6.ico', '/fav7.ico', '/fav8.ico',
@@ -12,8 +14,12 @@
 		'/fav17.ico', '/fav18.ico',
 	];
 
+	/** @type {ReturnType<typeof setInterval>} setIntervalのID */
 	let interval;
 
+	/**
+	 * Faviconを次のものに更新する
+	 */
 	function updateFavicon() {
 		const oldLink = document.querySelector("link[rel~='icon']");
 		if (oldLink) {
@@ -30,12 +36,15 @@
 
 	onMount(() => {
 		updateFavicon();
-		interval = setInterval(updateFavicon, 2); // 1秒ごとに変更
+		interval = setInterval(updateFavicon, 2);
 	});
 
 	onDestroy(() => {
 		clearInterval(interval);
 	});
+
+	/** @type {any} 子要素 */
+	export let children;
 </script>
 
 {@render children()}
