@@ -11,9 +11,12 @@
 		role: '合同会社Kalytero COO',
 		description: 'Do One Thing and Do It Well',
 		details: [
-			{ title: '住まい', date: '現在', description: '埼玉県 朝霞市在住' },
-			{ title: '出身地', date: '過去', description: '茨城県 古河市出身' },
-			{ title: '大学在学中', date: '現在', description: '情報経営イノベーション専門職大学 在学中' },
+			{ title: "42 Tokyo", date: '2024〜2025', description: '' },
+			{ title: '情報経営イノベーション専門職大学 中退', date: '2023〜2025', description: '2023年度学友会 自治本部長<br>2024年度学友会' },
+			{ title: '合同会社Kalytero', date: '2023〜', description: 'COO' },
+			{ title: 'NPO法人Pendemyデジタル教育ラボ', date: '2022〜', description: '旧：Pendemyふちゅう教育ラボ' },
+			{ title: 'N高等学校 卒業', date: '2023', description: ''},
+			{ title: "株式会社NoSchool", date: '2022〜2023', description: 'インターン生/アルバイト<br>メディア運営、SEOマーケティング'}
 		]
 	};
 </script>
@@ -36,9 +39,9 @@
 		<div class="mt-6 md:mt-0 md:ml-8 md:w-2/3">
 			<p class="text-md mb-4 text-gray-200 italic">{profile.description}</p>
 
-			<ScrollArea class="h-[330px] w-full overflow-y-auto border rounded-md p-4">
-				<div class="space-y-4 pl-4">  <!-- 内部の高さを適切に確保 -->
-					<Timeline>
+			<ScrollArea class="md:h-80 h-72  w-full overflow-y-auto border rounded-md p-4">
+				<div class="space-y-4 pl-4 -mb-10">  <!-- 内部の高さを適切に確保 -->
+					<Timeline order="default">
 						{#each profile.details as detail}
 							<TimelineItem title={detail.title} date={detail.date}>
 								<svelte:fragment slot="icon">
@@ -46,7 +49,9 @@
 										<CalendarWeekSolid class="w-4 h-4 text-primary-600 dark:text-primary-400" />
 									</span>
 								</svelte:fragment>
-								<p class="text-base font-normal text-gray-500 dark:text-gray-400">{detail.description}</p>
+								<p class="text-base font-normal text-gray-500 dark:text-gray-400 -mb-5">
+									{@html detail.description.replace(/\n/g, '<br>')}
+								</p>
 								<Separator class="my-2" />
 							</TimelineItem>
 						{/each}

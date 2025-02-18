@@ -2,10 +2,10 @@
 	import { Card, CardContent } from '$lib/components/ui/card';
 
 	const pemdemyInfo = {
-		title: 'Pemdemyでのこと',
-		role: '色々書きたい',
-		description: 'あ。',
-		details: ['あ', 'あ', 'あ', 'あ']
+		title: 'Pemdemy',
+		role: '',
+		description: '',
+		details: []
 	};
 </script>
 
@@ -16,14 +16,14 @@
 	<CardContent class="grid grid-cols-1 items-center gap-6 p-6 md:grid-cols-2">
 		<!-- 左カラム：タイトルと説明 -->
 		<div class="flex flex-col space-y-3">
-			<h2 class="text-3xl font-extrabold text-blue-100">
+			<h2 class="text-3xl font-extrabold text-white">
 				{pemdemyInfo.title}
 			</h2>
-			<p class="text-md text-blue-200">
-				<strong>役割:</strong>
+			<p class="text-md text-white">
+				<strong></strong>
 				{pemdemyInfo.role}
 			</p>
-			<p class="text-sm text-blue-300">
+			<p class="text-sm text-white">
 				{pemdemyInfo.description}
 			</p>
 		</div>
@@ -31,8 +31,8 @@
 		<ul class="space-y-2">
 			{#each pemdemyInfo.details as detail}
 				<li class="flex items-center">
-					<div class="mr-3 h-3 w-3 rounded-full bg-blue-400"></div>
-					<span class="text-blue-100">{detail}</span>
+					<div class="mr-3 h-3 w-3 rounded-full bg-gray-100"></div>
+					<span class="text-white">{detail}</span>
 				</li>
 			{/each}
 		</ul>

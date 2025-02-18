@@ -178,7 +178,7 @@
 	</div>
 
 	<!-- カードスタック用コンテナ -->
-	<div class="perspective-container relative h-[600px] w-[90%] md:h-[420px] md:w-[910px]">
+	<div class="perspective-container relative min-h-[600px] w-[90%] md:min-h-[420px] md:w-[910px]">
 		<div class="backdrop-blur-3xl">
 			{#each cards as cardId (cardId)}
 				<div

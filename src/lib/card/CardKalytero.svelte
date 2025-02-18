@@ -22,7 +22,7 @@
 	style="backdrop-filter: blur(10px);"
 >
 	<CardContent class="flex flex-col items-start space-y-4 p-8">
-		<h2 class="border-b-2 border-blue-500 pb-2 text-4xl font-bold text-white">
+		<h2 class="border-b-2 border-white pb-2 md:text-4xl text-3xl font-bold text-white">
 			{kalyteroInfo.title}
 		</h2>
 		<p class="text-lg text-gray-300">
@@ -39,7 +39,7 @@
 				{/each}
 			</ul>
 			<Button
-				class="mt-4 transform rounded-full bg-blue-600 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-blue-700 hover:shadow-xl md:mt-0"
+				class="mt-4 transform rounded-full bg-none border border-white px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-white/10 hover:shadow-xl md:mt-0"
 			>
 				<a
 					href={kalyteroInfo.website}

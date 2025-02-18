@@ -46,10 +46,11 @@
             text-white shadow-xl
             backdrop-blur-2xl
             transition-colors
-            duration-300 hover:bg-gray-800/80
+            hover:bg-gray-800/80
             md:mx-0
             md:my-2
             md:p-4
+            hover:scale-105 transform hover:shadow-2xl duration-300
           "
 				>
 					{labels[cardId]}
