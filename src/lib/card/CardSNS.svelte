@@ -27,7 +27,7 @@
 </script>
 
 <Card
-	class=" card-size mx-auto min-h-[600px] border border-white bg-gray-800/80 shadow-xl backdrop-blur-2xl transition-transform duration-300 md:min-h-[420px]"
+	class=" card-size mx-auto min-h-[600px] border border-white bg-gray-800/80 shadow-xl backdrop-blur-2xl transition-transform duration-300 md:min-h-[500px]"
 	style="backdrop-filter: blur(10px);"
 >
 	<CardContent class="flex flex-col items-center space-y-4 p-6">

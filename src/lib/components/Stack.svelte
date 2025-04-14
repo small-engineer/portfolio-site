@@ -50,7 +50,7 @@
 
 		isAnimating = true;
 		const isMobile = window.innerWidth < 768;
-		const tweenProps = isMobile ? { x: 330 } : { y: -430 };
+		const tweenProps = isMobile ? { x: 330 } : { y: -530 };
 
 		gsap
 			.timeline({
@@ -107,7 +107,7 @@
 		}
 
 		const isMobile = window.innerWidth < 768;
-		const tweenProps = isMobile ? { x: 330 } : { y: -430 };
+		const tweenProps = isMobile ? { x: 330 } : { y: -530 };
 		const aboveCards = cards.slice(0, idx);
 		const els = aboveCards.map((cid) => document.getElementById(`card-${cid}`)).filter(Boolean);
 
@@ -175,12 +175,12 @@
 	</div>
 
 	<!-- カードスタック用コンテナ -->
-	<div class="perspective-container relative min-h-[600px] w-[90%] md:min-h-[420px] md:w-[910px]">
+	<div class="perspective-container relative min-h-[600px] w-[96%] md:min-h-[500px] md:w-[910px]">
 		<div class="backdrop-blur-3xl">
 			{#each cards as cardId (cardId)}
 				<div
 					id="card-{cardId}"
-					class="absolute top-0 left-0 h-[600px] w-[90%] cursor-pointer md:h-[420px] md:w-[910px]"
+					class="absolute top-0 left-0 h-[600px] w-[96%] cursor-pointer md:h-[420px] md:w-[910px]"
 					on:click={() => handleCardClick(cardId)}
 					on:keydown={(e) => e.key === 'Enter' && handleCardClick(cardId)}
 					role="button"
