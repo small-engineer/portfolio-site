@@ -15,7 +15,7 @@
 
 	const bgImages = ['/bg1.webp', '/bg2.webp','/bg1.webp','/kalytero.webp', '/gakuyukai.webp', '/pemdemy.webp'];
 
-	const cardLabels = ['自己紹介', 'SNSリンク', 'Kalytero', '学友会', 'Pemdemy', 'ポートフォリオ'];
+	const cardLabels = ['自己紹介', 'ポートフォリオ', 'SNSリンク', 'Kalytero', '学友会', 'Pemdemy'];
 
 	async function preloadImages(images: string[]) {
 		await Promise.all(
