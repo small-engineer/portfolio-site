@@ -1,14 +1,45 @@
 <script lang="ts">
+	/**
+	 * @fileoverview カスタムマウスカーソルを表示し、ホバー対象に応じて外観を変えるコンポーネント。
+	 * カーソルは `Tween` によって滑らかに位置を追従し、特定の要素上では `pointer` スタイルになる。
+	 */
 	import { onMount } from 'svelte';
 	import { Tween } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
 
-	const x = new Tween(0, { duration: 300, easing: cubicOut });
-	const y = new Tween(0, { duration: 300, easing: cubicOut });
+	/**
+	 * マウスX座標のTweenアニメーション。
+	 * @type {!Tween<number>}
+	 * @const
+	 */
+	const x = new Tween(0, {
+		duration: 300,
+		easing: cubicOut
+	});
 
+	/**
+	 * マウスY座標のTweenアニメーション。
+	 * @type {!Tween<number>}
+	 * @const
+	 */
+	const y = new Tween(0, {
+		duration: 300,
+		easing: cubicOut
+	});
+
+	/**
+	 * 現在のカーソル位置がポインタスタイル（リンクなど）かどうかを示すフラグ。
+	 * @type {boolean}
+	 */
 	let isPointer = false;
 
 	onMount(() => {
+		/**
+		 * マウス移動時にカーソル位置を更新し、ポインタ要素上にあるかどうかを判定する。
+		 *
+		 * @param {!MouseEvent} event マウス移動イベント。
+		 * @return {void}
+		 */
 		const handleMouseMove = (event: MouseEvent) => {
 			x.target = event.clientX;
 			y.target = event.clientY;

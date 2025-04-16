@@ -1,11 +1,24 @@
 <script lang="ts">
+	/**
+	 * @fileoverview Faviconをアニメーション的に切り替えるSvelteコンポーネント。
+	 * favicon画像を順に切り替えることで、動くアイコンのような視覚効果を演出。
+	 */
+
 	import '../app.css';
 	import { onMount, onDestroy } from 'svelte';
 
-	/** @type {number} 現在のfaviconのインデックス */
+	/**
+	 * 現在の favicon のインデックス。
+	 * @type {number}
+	 * @private
+	 */
 	let faviconIndex = 0;
 
-	/** @type {string[]} 使用するfaviconのリスト */
+	/**
+	 * 使用する favicon パスのリスト。
+	 * @type {!Array<string>}
+	 * @const
+	 */
 	const favicons = [
 		'/fav1.ico',
 		'/fav2.ico',
@@ -27,9 +40,26 @@
 		'/fav18.ico'
 	];
 
+	/**
+	 * Blob URL に変換された favicon のリスト。
+	 * @type {!Array<string>}
+	 * @private
+	 */
 	let encFavicons: string[] = [];
+
+	/**
+	 * Favicon更新用のinterval ID。
+	 * @type {?ReturnType<typeof setInterval>}
+	 * @private
+	 */
 	let interval: ReturnType<typeof setInterval>;
 
+	/**
+	 * Faviconを次の画像に更新する。
+	 *
+	 * @return {void}
+	 * @private
+	 */
 	async function updateFavicon() {
 		if (encFavicons.length === 0) return;
 		const doc = document.querySelector("link[rel~='icon']") as HTMLLinkElement | null;
@@ -37,7 +67,6 @@
 		doc.href = encFavicons[faviconIndex];
 		faviconIndex = (faviconIndex + 1) % encFavicons.length;
 	}
-	
 
 	onMount(async () => {
 		encFavicons = await Promise.all(
@@ -54,7 +83,11 @@
 		clearInterval(interval);
 	});
 
-	/** @type {any} 子要素 */
+	/**
+	 * このコンポーネント内で描画される任意の子要素。
+	 * @type {*}
+	 * @export
+	 */
 	export let children;
 </script>
 

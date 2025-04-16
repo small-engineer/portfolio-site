@@ -1,30 +1,65 @@
 <script lang="ts">
+	/**
+	 * @fileoverview カードスタック表示とアニメーション制御を行う Svelte コンポーネント。
+	 * ユーザーがカードをクリックまたは目次から選択することで、
+	 * アニメーションとともに表示されるカードと背景画像が切り替わる。
+	 */
+
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import CardIndex from '$lib/components/CardIndex.svelte';
 	import { backgroundUrl } from '$lib/stores';
 
+	/**
+	 * 表示するカードのコンポーネントリスト。
+	 * @type {!Array<!any>}
+	 * @export
+	 */
 	export let cardComponents: any[];
+
+	/**
+	 * カードに対応するラベル名リスト。
+	 * @type {!Array<string>}
+	 * @export
+	 */
 	export let cardLabels: string[];
+
+	/**
+	 * カードに対応する背景画像URLのリスト。
+	 * @type {!Array<string>}
+	 * @export
+	 */
 	export let backgroundImages: string[];
 
 	/**
-	 * 各カードに割り当てる静的なIDの配列を生成
+	 * 各カードに割り当てる静的なIDの配列。
 	 * 例: [0, 1, 2, ...]
+	 * @type {!Array<number>}
+	 * @const
 	 */
 	const staticCards: number[] = cardComponents.map((_, i) => i);
 
-	// カードの表示順序（初期状態は静的な順序）
+	/**
+	 * 現在のカード表示順を管理する配列。
+	 * @type {!Array<number>}
+	 */
 	let cards: number[] = [...staticCards];
 
-	// 再クリックまでの待機時間（ミリ秒）
+	/**
+	 * 再クリックまでの待機時間（ミリ秒）。
+	 * @type {number}
+	 * @const
+	 */
 	const RECLICK_DELAY_MS: number = 450;
 
-	// アニメーション中かどうかのフラグ
+	/**
+	 * アニメーション中かどうかを示すフラグ。
+	 * @type {boolean}
+	 * @private
+	 */
 	let isAnimating: boolean = false;
 
 	onMount(() => {
-		// 初期状態として、"一番上のカード" に対応する背景を適用
 		if (cards.length > 0) {
 			backgroundUrl.set(backgroundImages[cards[0]] || '');
 		}
@@ -41,8 +76,21 @@
 		});
 	});
 
-	function handleCardClick(cardId: number) {
-		// アニメーション中 or 最上位カードでないなら無視
+	/**
+	 * カードがクリックまたは Enter キーで選択された時の処理。
+	 *
+	 * @param {!MouseEvent|!KeyboardEvent} event ユーザーのイベント。
+	 * @param {number} cardId 対象のカードID。
+	 * @return {void}
+	 */
+	function handleCardClick(event: MouseEvent | KeyboardEvent, cardId: number) {
+		// インタラクティブ要素のクリックを除外（マウスイベント時のみチェック）
+		if (event instanceof MouseEvent) {
+			const target = event.target as HTMLElement;
+			const isInteractive = target.closest('button, a, input, textarea, svg, .non-interactive');
+			if (isInteractive) return;
+		}
+		if (event instanceof KeyboardEvent && event.key !== 'Enter') return;
 		if (isAnimating || cardId !== cards[0]) return;
 
 		const cardEl = document.getElementById(`card-${cardId}`);
@@ -61,11 +109,9 @@
 				onComplete: () => {
 					setTimeout(() => {
 						cards = [...cards.slice(1), cards[0]];
-
 						requestAnimationFrame(() => {
 							backgroundUrl.set(backgroundImages[cards[0]] || '');
 						});
-
 						adjustCardPositions();
 						setTimeout(() => {
 							isAnimating = false;
@@ -81,6 +127,12 @@
 			});
 	}
 
+	/**
+	 * カードインデックス（目次）から特定のカードを選択したときの処理。
+	 *
+	 * @param {number} cardId 選択されたカードのID。
+	 * @return {void}
+	 */
 	function handleIndexSelect(cardId: number) {
 		if (isAnimating) return;
 		isAnimating = true;
@@ -152,6 +204,11 @@
 			});
 	}
 
+	/**
+	 * 現在のカードの順序に基づいて、それぞれのカードの位置を調整する。
+	 *
+	 * @return {void}
+	 */
 	function adjustCardPositions() {
 		cards.forEach((id, index) => {
 			const el = document.getElementById(`card-${id}`);
@@ -181,8 +238,8 @@
 				<div
 					id="card-{cardId}"
 					class="absolute top-0 left-0 h-[600px] w-[96%] cursor-pointer md:h-[420px] md:w-[910px]"
-					on:click={() => handleCardClick(cardId)}
-					on:keydown={(e) => e.key === 'Enter' && handleCardClick(cardId)}
+					on:click={(e) => handleCardClick(e, cardId)}
+					on:keydown={(e) => handleCardClick(e, cardId)}
 					role="button"
 					tabindex="0"
 					style="z-index: {cards.length - cards.indexOf(cardId)};"
