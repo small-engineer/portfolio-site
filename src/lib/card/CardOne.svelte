@@ -182,11 +182,19 @@
 	<CardContent class="flex flex-col items-center p-6 md:flex-row md:items-start">
 		<!-- 左カラム: アイコンと名前・役職 -->
 		<div class="flex flex-col items-center md:w-1/2 md:items-start">
-			<div class="mb-4 flex h-32 w-32 items-center justify-center rounded-full">
-				<img src="/prof.webp" alt="Profile" class="h-28 w-28 rounded-full" />
+			<!-- 横並びにするためのラッパー -->
+			<div class="mb-4 flex items-center space-x-4">
+				<!-- アイコン -->
+				<div class="flex h-28 w-28 items-center justify-center rounded-full overflow-hidden">
+					<img src="/prof.webp" alt="Profile" class="h-28 w-28 object-cover" />
+				</div>
+				<!-- 名前と職業 -->
+				<div class="text-left">
+					<h2 class="text-2xl font-bold text-white">{profile.name}</h2>
+					<p class="mt-1 text-sm text-gray-300">{profile.role}</p>
+				</div>
 			</div>
-			<h2 class="text-2xl font-bold text-white">{profile.name}</h2>
-			<p class="mt-1 text-sm text-gray-300">{profile.role}</p>
+
 			<!-- 技術スタック: フレームワーク -->
 			<h3 class="mt-4 text-sm text-gray-400">言語・フレームワーク</h3>
 			<div class="mt-1 flex flex-wrap gap-3">
@@ -236,7 +244,7 @@
 
 		<!-- 右カラム: タイムライン (スクロール可能) -->
 		<div class="mt-6 md:mt-0 md:ml-8 md:w-2/3">
-			<ScrollArea class="md:h-[34rem] h-72  w-full overflow-y-auto border rounded-md p-4">
+			<ScrollArea class="md:h-[30rem] h-72  w-full overflow-y-auto border rounded-md p-4">
 				<div class="space-y-4 pl-4 -mb-10">
 					<Timeline order="default">
 						{#each profile.details as detail}

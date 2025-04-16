@@ -2,6 +2,7 @@
 	import CardOne from '$lib/card/CardOne.svelte';
 	import { onMount } from 'svelte';
 	import CardSNS from '$lib/card/CardSNS.svelte';
+	import CardPortfolio from '$lib/card/CardPortfolio.svelte';
 	import CardKalytero from '$lib/card/CardKalytero.svelte';
 	import CardGakuyukai from '$lib/card/CardGakuyukai.svelte';
 	import CardPemdemy from '$lib/card/CardPemdemy.svelte';
@@ -10,11 +11,11 @@
 	import Cursor from '$lib/components/Cursor.svelte';
 	import Fotter from '$lib/components/Footer.svelte';
 
-	const cardComponents = [CardOne, CardSNS, CardKalytero, CardGakuyukai, CardPemdemy];
+	const cardComponents = [CardOne, CardPortfolio, CardSNS, CardKalytero, CardGakuyukai, CardPemdemy];
 
-	const bgImages = ['/bg1.webp', '/bg2.webp', '/kalytero.webp', '/gakuyukai.webp', '/pemdemy.webp'];
+	const bgImages = ['/bg1.webp', '/bg2.webp','/bg1.webp','/kalytero.webp', '/gakuyukai.webp', '/pemdemy.webp'];
 
-	const cardLabels = ['自己紹介', 'SNSリンク', 'Kalytero', '学友会', 'Pemdemy'];
+	const cardLabels = ['自己紹介', 'SNSリンク', 'Kalytero', '学友会', 'Pemdemy', 'ポートフォリオ'];
 
 	async function preloadImages(images: string[]) {
 		await Promise.all(
