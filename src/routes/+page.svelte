@@ -47,6 +47,7 @@
     <meta name="twitter:title" content="若宮 佑真 (Wakamiya Yuma) のプロフィールサイト">
     <meta name="twitter:description" content="若宮 佑真 (Wakamiya Yuma) のプロフィールサイト">
     <meta name="twitter:image" content="/site-image.jpeg">
+	<link rel="icon" href="" type="image/x-icon">
 </svelte:head>
 
 

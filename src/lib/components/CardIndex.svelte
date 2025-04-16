@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Button } from '$lib/components/ui/button';
+	import { Menu } from 'lucide-svelte';
 
 	export let cards: number[];
 	export let labels: string[];
@@ -18,61 +19,29 @@
 -->
 <div
 	class="
-    fixed
-    top-1
-    left-1 z-50 flex min-w-28
-    rounded-xl
-    border
-    border-white bg-gray-900/80
-    p-0 shadow-2xl
-    backdrop-blur-2xl
-    duration-300
-    md:static
-    md:w-auto
-    md:p-5
-  "
+		fixed
+		top-0
+		left-0
+		z-50
+		flex
+		w-auto
+		p-2
+	"
 >
-	<!-- PC向け: ボタン一覧 -->
-	<ul class="m-0 hidden list-none flex-col items-center p-0 md:flex">
-		{#each cards as cardId}
-			<li>
-				<button
-					type="button"
-					on:click={() => onSelect(cardId)}
-					class="
-            mx-0 my-0 cursor-pointer
-            rounded-xl border border-white bg-gray-900/80
-            p-2 text-center
-            text-white shadow-xl
-            backdrop-blur-2xl
-            transition-colors
-            hover:bg-gray-800/80
-            md:mx-0
-            md:my-2
-            md:p-4
-            hover:scale-105 transform hover:shadow-2xl duration-300
-          "
-				>
-					{labels[cardId]}
-				</button>
-			</li>
-		{/each}
-	</ul>
-
 	<!-- スマホ向け: DropdownMenu -->
-	<div class="relative md:hidden">
+	<div class="">
 		<DropdownMenu.Root>
 			<DropdownMenu.Trigger asChild let:builder>
-				<Button builders={[builder]} variant="outline" class="border-0 text-white ">
-					カード一覧
+				<Button builders={[builder]} variant="outline" class="border-0 text-white">
+					<Menu class="w-10 h-10" />
 				</Button>
 			</DropdownMenu.Trigger>
-			<DropdownMenu.Content class="@-2 rounded-xl bg-black/80 text-white shadow-xl">
+			<DropdownMenu.Content class="@-2 rounded-xl border border-white bg-gray-900/80 backdrop-blur-xl text-white">
 				<DropdownMenu.Group>
 					{#each cards as cardId}
 						<DropdownMenu.Item
 							on:click={() => onSelect(cardId)}
-							class="w-full text-left hover:bg-gray-700"
+							class="w-full text-left hover:bg-gray-700/80"
 						>
 							{labels[cardId]}
 						</DropdownMenu.Item>
@@ -81,4 +50,5 @@
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 	</div>
+
 </div>
