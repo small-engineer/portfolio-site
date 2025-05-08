@@ -186,7 +186,7 @@
 			<div class="mb-4 flex items-center space-x-4">
 				<!-- アイコン -->
 				<div class="flex h-28 w-28 items-center justify-center rounded-full overflow-hidden">
-					<img src="/prof.webp" alt="Profile" class="h-28 w-28 object-cover" />
+					<img src="/prof.jpg" alt="Profile" class="h-28 w-28 object-cover" />
 				</div>
 				<!-- 名前と職業 -->
 				<div class="text-left">
